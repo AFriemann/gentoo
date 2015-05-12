@@ -15,7 +15,7 @@ SRC_URI="https://bitbucket.org/afriemann/cph/downloads/cph-${PV}.tar.gz"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 SLOT=0
-IUSE="gtk"
+IUSE="+gtk"
 
 DEPEND="dev-libs/libgcrypt
 		gtk? ( x11-libs/gtk+:3 )"
