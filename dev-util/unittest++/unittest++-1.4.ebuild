@@ -7,9 +7,9 @@ EAPI=5
 inherit eutils multilib
 
 DESCRIPTION="A lightweight unit testing framework for C++"
-HOMEPAGE="http://unittest-cpp.sourceforge.net/"
-SRC_URI="http://downloads.sourceforge.net/project/unittest-cpp/UnitTest++/${PV}/unittest-cpp-${PV}.zip"
-S="${WORKDIR}/UnitTest++"
+HOMEPAGE="https://github.com/unittest-cpp/unittest-cpp"
+SRC_URI="https://github.com/unittest-cpp/unittest-cpp/archive/v${PV}.tar.gz"
+S="${WORKDIR}/unittest-cpp-${PV}"
 
 LICENSE="MIT"
 SLOT="0"

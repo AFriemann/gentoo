@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="CBMC is a Bounded Model Checker for C and C++ programs."
-HOMEPAGE="http://www.cprover.org/cbmc/"
+HOMEPAGE="http://www.cprover.org/cbmc"
 LICENSE="MIT" # TODO
 
 SRC_URI="http://www.cprover.org/cbmc/download/cbmc-5-0-linux-64.tgz"
@@ -21,6 +21,3 @@ src_install () {
 	dodoc LICENSE
 }
 
-https://devmanual.gentoo.org/quickstart/
-https://wiki.gentoo.org/wiki/Basic_guide_to_write_Gentoo_Ebuilds
-http://www.cprover.org/cbmc/
