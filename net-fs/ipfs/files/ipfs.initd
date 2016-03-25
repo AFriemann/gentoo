@@ -1,0 +1,39 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+NAME=${SVCNAME##*.}
+if [ -n "${NAME}" -a "${SVCNAME}" != "ipfs" ]; then
+    PID="/run/ipfs.${NAME}.pid"
+    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
+    CONF_DEFAULT="/etc/conf.d/ipfs.${NAME}"
+else
+    PID="/run/ipfs.pid"
+    PNAME=${RC_SVCNAME}
+    CONF_DEFAULT="/etc/conf.d/ipfs"
+fi
+CONF=${CONF:-${CONF_DEFAULT}}
+EXEC=${EXEC:-/usr/bin/ipfs}
+
+depend() {
+    need net
+    provide ipfs
+}
+
+start() {
+    ebegin "Starting IPFS"
+    start-stop-daemon --start --quiet --background --pidfile ${PID} --make-pidfile --exec ${EXEC} -- ${OPTS} daemon
+    eend $?
+}
+
+start_post() {
+    pgrep -n $(echo ${PNAME}) > ${PID}
+}
+
+stop() {
+    ebegin "Stopping IPFS"
+    start-stop-daemon --stop --quiet --pidfile ${PID}
+    rm -f ${PID}
+    eend $?
+}

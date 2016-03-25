@@ -36,4 +36,17 @@ src_compile() {
 
 src_install() {
 	dobin "${GOPATH}"/bin/ipfs
+
+    newinitd "${FILESDIR}"/${PN}.initd ${PN}
+    newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
+
+pkg_postinst() {
+	# Initialize default config and key
+	ipfs --config /etc/ipfs init
+
+    # Config files should not be visible to everyone
+    insinto /etc/${PN}
+    insopts -m600
+}
+
