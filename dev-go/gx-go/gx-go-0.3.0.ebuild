@@ -4,33 +4,23 @@
 
 EAPI="5"
 
-inherit eutils user linux-info
+inherit golang-build golang-vcs
 
 DESCRIPTION="A tool for importing go packages into gx"
 HOMEPAGE="https://github.com/whyrusleeping/gx-go"
+EGO_PN="github.com/whyrusleeping/gx-go"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
-DEPEND="dev-lang/go dev-go/gx"
+DEPEND="$DEPEND dev-go/gx"
 
-pkg_setup() {
-	export GOPATH="${S}"
-}
-
-src_unpack() {
-	mkdir -p "${S}"
-}
-
-src_prepare() {
-	mkdir -p "${GOPATH}"/src/github.com
-}
-
-src_compile() {
-	go get -u github.com/whyrusleeping/gx-go
+# fix for the nonsensical discrepancy between golang-base/golang-build and golang-vcs
+get_golibdir() {
+	echo "$EGO_STORE_DIR"
 }
 
 src_install() {
-	dobin ${GOPATH}/bin/gx-go
+	dobin ${WORKDIR}/${P}/gx-go
 }
