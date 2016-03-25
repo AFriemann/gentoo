@@ -4,8 +4,6 @@
 
 EAPI="5"
 
-inherit golang-vcs
-
 DESCRIPTION="gx is a packaging tool built around the distributed, content addressed filesystem IPFS. "
 HOMEPAGE="https://github.com/whyrusleeping/gx"
 EGO_PN="github.com/whyrusleeping/gx"
@@ -14,12 +12,17 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
-export GOPATH="${S}:${GOPATH}"
+export GOPATH="${S}"
+
+src_unpack() {
+	mkdir -p "${GOPATH}"
+}
 
 src_compile() {
-	go get -u "${EGO_PN}"
+	go get -u -v -x "${EGO_PN}"
 }
 
 src_install() {
-	dobin ${S}/bin/gx
+	dobin ${GOPATH}/bin/gx
 }
+
