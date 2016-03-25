@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit golang-build golang-vcs
+inherit golang-vcs
 
 DESCRIPTION="gx is a packaging tool built around the distributed, content addressed filesystem IPFS. "
 HOMEPAGE="https://github.com/whyrusleeping/gx"
@@ -14,11 +14,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
-# fix for the nonsensical discrepancy between golang-base/golang-build and golang-vcs
-get_golibdir() {
-	echo "$EGO_STORE_DIR"
+export GOPATH="${S}:${GOPATH}"
+
+src_compile() {
+	go get -u "${EGO_PN}"
 }
 
 src_install() {
-	dobin ${WORKDIR}/${P}/gx
+	dobin ${S}/bin/gx
 }
