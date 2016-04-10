@@ -1,0 +1,41 @@
+#!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+PYPI_PORT=${PYPI_PORT:-8080}
+PYPI_STORAGE=${PYPI_STORAGE:-/storage/pypi}
+
+CONTAINER_NAME=${CONTAINER_NAME:-pypi}
+
+depend() {
+    need net docker localmount
+    provide pypi
+}
+
+start() {
+    ebegin "Starting $CONTAINER_NAME"
+
+    [ -d "$PYPI_STORAGE" ] || mkdir -p "$PYPI_STORAGE"
+    [ -f "${PYPI_STORAGE}/.htaccess" ] || touch "$PYPI_STORAGE"/.htaccess
+
+    docker run -d -t --name "$CONTAINER_NAME" -p "$PYPI_PORT":80 -v "$PYPI_STORAGE":/srv/pypi:rw codekoala/pypi &>/dev/null
+    eend $?
+}
+
+status() {
+    if docker ps | grep -q "$CONTAINER_NAME"; then
+        eend 0 "status: running"
+    else
+        eend 1 "status: stopped"
+    fi
+}
+
+stop() {
+    ebegin "Stopping $CONTAINER_NAME"
+
+    docker stop "$CONTAINER_NAME" &>/dev/null || :
+    docker rm "$CONTAINER_NAME" &>/dev/null
+
+    eend $?
+}
