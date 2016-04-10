@@ -30,7 +30,10 @@ pkg_nofetch() {
 }
 
 src_install() {
-	dodir /opt/factorio
-	cp -R "${S}" "${D}"/opt/ || die "Install failed!"
-	dosym /opt/factorio/bin/x64/factorio /usr/local/bin/factorio
+	dodir /usr/share/factorio
+	cp -R "${S}"/* "${D}"/usr/share/factorio/ || die "Install failed!"
+	mv "${D}"/usr/share/factorio/data/* "${D}"/usr/share/factorio || die "Install failed!"
+	rm -r "${D}"/usr/share/factorio/data
+
+	dosym /usr/share/factorio/bin/x64/factorio /usr/local/bin/factorio
 }
