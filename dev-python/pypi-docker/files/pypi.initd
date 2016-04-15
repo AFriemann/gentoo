@@ -19,6 +19,8 @@ start() {
     [ -d "$PYPI_STORAGE" ] || mkdir -p "$PYPI_STORAGE"
     [ -f "${PYPI_STORAGE}/.htaccess" ] || touch "$PYPI_STORAGE"/.htaccess
 
+    docker rm "${CONTAINER_NAME}" &>/dev/null || :
+
     docker run -d -t --name "$CONTAINER_NAME" -p "$PYPI_PORT":80 -v "$PYPI_STORAGE":/srv/pypi:rw codekoala/pypi &>/dev/null
     eend $?
 }
