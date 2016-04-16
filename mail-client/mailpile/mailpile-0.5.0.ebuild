@@ -19,11 +19,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 SLOT=0
 
-DEPEND="dev-python/pytest dev-python/jinja dev-python/lxml >=mail-filter/spambayes-1.1_beta1 dev-python/pydns dev-python/pgpdump"
+DEPEND="dev-python/pytest dev-python/jinja >=dev-python/lxml-2.3.2 >=mail-filter/spambayes-1.1_beta1 dev-python/pydns:2 dev-python/pgpdump"
 RDEPEND="${DEPEND}"
-
-# src_install () {
-# 	dobin Telegram
-# 	dobin Updater
-# }
 
