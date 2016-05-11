@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="urxvt daemon"
+
+user="${SVCNAME/*./}"
+group="`id -g -n ${user}`"
+pidfile="/var/run/${SVCNAME}"
+
+command="/usr/bin/urxvtd"
+command_args=""
+command_background="true"
+start_stop_daemon_args="-p ${pidfile} -m -b -u ${user} -g ${group}"
+
+depend() {
+	need localmount
+	after localmount
+}
+
