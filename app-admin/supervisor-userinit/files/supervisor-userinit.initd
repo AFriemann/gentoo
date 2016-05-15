@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="user based init script for supervisord"
+
+user="${SVCNAME/*./}"
+group="`id -g -n ${user} 2>/dev/null`"
+
+confdir="/home/${user}/.supervisord"
+logfile="${confdir}/supervisord.log"
+pidfile="${confdir}/${SVCNAME}.pid"
+config="${confdir}/supervisord.ini"
+
+required_files="${confdir} ${config}"
+
+command="/usr/bin/supervisord"
+command_args="--nodaemon --logfile ${logfile} --configuration ${config}"
+command_background="yes"
+
+start_stop_daemon_args="-p ${pidfile} -m -b -u ${user} -g ${group}"
+
+depend() {
+	need localmount
+	after localmount
+}
