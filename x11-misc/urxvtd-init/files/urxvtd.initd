@@ -7,7 +7,7 @@ description="urxvt daemon"
 
 user="${SVCNAME/*./}"
 group="`id -g -n ${user}`"
-pidfile="/var/run/${SVCNAME}"
+pidfile="/var/run/${SVCNAME}.pid"
 
 command="/usr/bin/urxvtd"
 command_args=""
