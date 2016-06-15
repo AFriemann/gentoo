@@ -1,0 +1,3 @@
+
+# Race Name	Skills/Level				Starting Feats	Size		Move			Face/Space	Reach		Serves As			Bonus Languages								Bonus Ability Pool			Save bonus							Stat bonus								Auto Language			Ability								Define				Main Race Type	Race Subtype		Type				Source Page		SORTKEY
+Lizardfolk						STARTFEATS:1	SIZE:M 	MOVE:Walk,30    FACE:5  REACH:5                 LANGBONUS:Aquan,Common,Goblin,Gnoll,Orc																				BONUS:STAT|CON|2    BONUS:STAT|INT|-22				AUTO:LANG|Draconic			ABILITY:Internal|AUTOMATIC|Race Traits ~ Lizardfolk		RACETYPE:Humanoid   RACESUBTYPE:Lizardfolk 		TYPE:Humanoid.Base.PC SORTKEY:a_base_pc

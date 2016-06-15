@@ -1,0 +1,16 @@
+
+# Ability Name				SORTKEY	Category of Ability		Type																						Visible		Stackable?	Multiple?	Choose		Cost
+Race Traits ~ Lizardfolk				CATEGORY:Internal
+
+#
+CATEGORY=Internal|Race Traits ~ Lizardfolk.MOD	ABILITY:Lizardfolk Racial Trait|AUTOMATIC|Lizardfolk ~ Natural Armor|!PREABILITY:1,CATEGORY:Special Ability,TYPE.NaturalArmor
+CATEGORY=Internal|Race Traits ~ Lizardfolk.MOD	ABILITY:Lizardfolk Racial Trait|AUTOMATIC|Lizardfolk ~ Swim|!PREABILITY:1,CATEGORY:Special Ability,TYPE.Swim
+CATEGORY=Internal|Race Traits ~ Lizardfolk.MOD	ABILITY:Lizardfolk Racial Trait|AUTOMATIC|Lizardfolk ~ Natural Attacks Bite|!PREABILITY:1,CATEGORY:Special Ability,TYPE.NaturalAttacksBite
+CATEGORY=Internal|Race Traits ~ Lizardfolk.MOD	ABILITY:Lizardfolk Racial Trait|AUTOMATIC|Lizardfolk ~ Natural Attacks Claws|!PREABILITY:1,CATEGORY:Special Ability,TYPE.NaturalAttacksClaws
+
+###Block: Lizardfolk Abilities
+# Ability Name		Unique Key				Category of Ability		Type																Visible		Multiple Requirements																					Description																																			Auto Weapon Prof							Ability								Bonus to Situation								Bonus to skill					Modify VAR				Change Weapon Prof. Category	Source Page		Aspects
+Natural Armor		KEY:Lizardfolk ~ Natural Armor	CATEGORY:Special Ability	TYPE:RacialTraits.SpecialQuality.Extraordinary.LizardfolkRacialTrait.LizardfolkRacialDefault						PREMULT:1,[PREABILITY:1,CATEGORY=Special Ability,Lizardfolk ~ Natural Armor],[!PREABILITY:1,CATEGORY=Special Ability,TYPE.NaturalArmor]		DESC:Lizardfolk have tough scaly skin, granting them a +2 natural armor bonus.																																																															ASPECT:NaturalArmorIncrease|+2
+Swim
+Natural Attack Bite
+Natural Attack Claws

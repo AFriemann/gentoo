@@ -1,0 +1,54 @@
+# CVS $Revision: 17893 $ $Author: amaitland $ -- Fri Oct 19 20:16:09 2012 -- reformated by prettylst.pl v1.39 (build 15052)
+SOURCELONG:My Campaign	SOURCESHORT:My	SOURCEWEB:http://www.mywebsite.com	SOURCEDATE:2008-01
+
+#insert your data here
+
+#Every line that starts with a '#' is a comment. You may want to remove these comments, if you use this file to set up
+#your own data. Remember not to put the '#' at the start of your own data, as PCGen would see it as a comment only.
+#
+#When Running PCGen, you can select "Help > Documentation > List Files > List File Tag Index > Feat File tags" to find
+#out how the tags in the feats file work. Some of the tags used here are global tags. You will see an alphabetical
+#listing of all PCGen tags to the left of the documentation window. You can find the global tags there as well.
+#
+# Abilities are the newest method for all aspects of class & race abilities. Currently we use hidden feats to emulate
+# class and racial abilities. The advent of Abilities allows us to use one standard format for a variety of things.
+# Generally Abilities are exactly the same in format as a Feat with the exception of a NEW tag CATEGORY which tells
+# PCGen what the ability is to be categoried as - example: My Ability is part of the my_abilities category, So I can add
+# points only to the my_abilities allowing very small and restricted lists. Another example would be Fighter Bonus feats.
+#
+# Feat and ability are used through out this example as they almost the same thing - ABILITY can also be used to add "Feats"
+# using the CATEGORY:FEAT tag.
+# You can also use PREFEAT for any CATEGORY:FEAT, for the rest you'll need to use PREABILITY:x,CATEGORY=<category>,Foo,TYPE.Bar (x is the number)
+#####1st Example
+
+# Ability Name			Unique Key						Category of Ability			Type																					Multiple Requirements																														Innate Spells																													Description																																																																																																					Automatically Gained Weapon Prof.		Bonus to DC				Bonus to skill								Cost	Source Page		Aspects
+Arcane Focus			KEY:Arcane Focus ~ Elf			CATEGORY:Special Ability	TYPE:RacialTraits.SpecialQuality.Extraordinary.ElfRacialTrait.ElfWeaponFamiliarity		PREMULT:1,[PREABILITY:1,CATEGORY=Special Ability,Arcane Focus ~ Elf],[!PREABILITY:1,CATEGORY=Special Ability,TYPE.ElfWeaponFamiliarity]																																		DESC:Some elven families have such long traditions of producing wizards (and other arcane spellcasters) that they raise their children with the assumption each is destined to be a powerful magic-user, with little need for mundane concerns such as skill with weapons. Elves with this racial trait gain a +2 racial bonus on concentration checks made to cast arcane spells defensively. This racial trait replaces weapon familiarity.																							COST:0	SOURCEPAGE:p.13
+Darkvision				KEY:Darkvision ~ Elf			CATEGORY:Special Ability	TYPE:RacialTraits.SpecialQuality.Extraordinary.ElfRacialTrait.ElfRacialVision			PREMULT:1,[PREABILITY:1,CATEGORY=Special Ability,Darkvision ~ Elf],[!PREABILITY:1,CATEGORY=Special Ability,TYPE.ElfRacialVision]																																			DESC:Though uncommon, some groups of elves are born with darkvision, rather than low-light vision. In many cases this is taken as a sign of a drow in the elf's ancestry, and can lead to persecution within the elf's home community. Elves with this racial trait gain darkvision with a range of 60 feet, but also gain sensitivity to light and are dazzled in areas of bright light or within the radius of a daylight spell. This racial trait replaces low-light vision.				BONUS:VISION|Darkvision|60					COST:0	SOURCEPAGE:p.13
+Elemental Resistance	KEY:Elemental Resistance ~ Elf	CATEGORY:Special Ability	TYPE:RacialTraits.SpecialQuality.Extraordinary.ElfRacialTrait.ElfImmunities				PREMULT:1,[PREABILITY:1,CATEGORY=Special Ability,Elemental Resistance ~ Elf],[!PREABILITY:1,CATEGORY=Special Ability,TYPE.ElfImmunities]																																	DESC:Elves who dwell in the most extreme environments, from arctic wastelands to volcanic plains, develop natural resistance to the dangers of their homelands over the course of a few generations. Elves with this racial trait gain elemental resistance 5 to acid, cold, electricity, or fire. This choice is made at character creation, and once made it cannot be changed. This racial trait replaces elven immunities.																											COST:0	SOURCEPAGE:p.13
+Envoy					KEY:Envoy ~ Elf					CATEGORY:Special Ability	TYPE:RacialTraits.SpecialQuality.Extraordinary.ElfRacialTrait.ElfMagic					PREMULT:1,[PREABILITY:1,CATEGORY=Special Ability,Envoy ~ Elf],[!PREABILITY:1,CATEGORY=Special Ability,TYPE.ElfMagic]						SPELLS:Innate|TIMES=1|CASTERLEVEL=TL|Comprehend Languages|Detect Magic|Detect Poison|Read Magic|PRESTAT:1,INT=11				DESC:Elves often have trouble relating to neighbors of other races, especially those with much shorter lifespans. As a result, some are trained in minor magics that are particularly useful when dealing with non-elves. Elves with this racial trait and an Intelligence score of 11 or higher gain the following spell-like abilities once per day: comprehend languages, detect magic, detect poison, and read magic. The caster level for these effects is equal to the elf's level. This racial trait replaces elven magic.		COST:0	SOURCEPAGE:p.13
+#Fleet-Footed			KEY:Fleet-Footed ~ Elf			CATEGORY:Special Ability	TYPE:RacialTraits.SpecialQuality.Extraordinary.ElfRacialTrait.KeenSenses.ElfWeaponFamiliarity		PREMULT:1,[PREABILITY:1,CATEGORY=Special Ability,Fleet-Footed ~ Elf],[!PREABILITY:1,CATEGORY=Special Ability,TYPE.KeenSenses,TYPE.ElfWeaponFamiliarity]																											DESC:While all elves are naturally lithe and agile, some also are naturally speedy and have a strong desire to rush into situations rather than worrying about looking ahead. Elves with this racial trait receive Run as a bonus feat and a +2 racial bonus on initiative checks. This racial trait replaces keen senses and weapon familiarity.																																			BONUS:COMBAT|INITIATIVE|2							COST:0	SOURCEPAGE:p.13
+
+#####
+#Each ability takes one line, just like a feat, and the first field must be the abilities' name. In the Example the name of the ability is My Ability.
+#When naming feats you should only use parentheses at the end of the name if the name is not duplicated elsewhere. This is
+#because of how PCGen names abilities which can be taken multiple times. For example, the Feat/ability Weapon Focus when taken will display
+#as Weapon Focus(Dagger). Another example is Armor Proficiency (Light), there is no feat named Armor Proficiency so this name
+#is fine. What is happening is when PCGen finds a feat with parentheses that duplicates the name of another feat it assumes
+#that feat is an instance of the one without parentheses and does not display the one with parentheses.
+#
+#The TYPE tag is holding a . (period) delimited list of the types the ability/feat is.
+#
+#The DESC tag is used to hold the description of the Ability/Feat. In our files we usually keep the description brief, so the user
+#still need to own the book to make use of of the data, but for your personal files can get as elaborate as you want there.
+#
+#The MULT tag determines if a ability/feat can be taken multiple times. If the value is set to YES, then you MUST also use a CHOOSE
+#tag.
+#
+#The CHOOSE tag must be paired with a MULT:YES tag in feats for it to work properly. It will display a popup window that asks
+#for a selection according to what is being called for. There is a multitude of existing CHOOSE tags in PCGen. If you are
+#looking into the documentation under List File Tag Index, you can find them listed under the topic "CHOOSE tags".
+#
+#The BONUS tags are a group of similar tags, that grant some form of Bonus to another already existing tag. To read a description
+#of them, look in the List File Tag Index under the topic "Bonus tags".
+#
+#The SOURCEPAGE tag can be used to hold a reference to where you can find the feat. This will be displayed in PCGen.
