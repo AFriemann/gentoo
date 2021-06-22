@@ -8,7 +8,7 @@ inherit meson vala
 
 DESCRIPTION="mconnect - KDE Connect protocol implementation in Vala/C"
 HOMEPAGE="https://github.com/bboozzoo/mconnect"
-LICENSE="GPL"
+LICENSE="GPL-2"
 
 SRC_URI="https://github.com/bboozzoo/mconnect/archive/refs/heads/master.zip -> ${P}.zip"
 
@@ -44,6 +44,6 @@ src_configure() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install
+	meson_src_install
 	dodoc LICENSE
 }
