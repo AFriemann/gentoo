@@ -19,3 +19,11 @@ RDEPEND="
 	dev-python/python-lsp-server[${PYTHON_USEDEP}]
 	dev-python/isort[${PYTHON_USEDEP}]
 "
+
+src_unpack() {
+	if [[ -n ${A} ]]; then
+		unpack ${A}
+	fi
+
+	mv "${WORKDIR}/pyls-isort-0.2.2" "${WORKDIR}/${P}"
+}
