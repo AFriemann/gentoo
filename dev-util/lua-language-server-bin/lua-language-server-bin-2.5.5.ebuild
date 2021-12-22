@@ -40,5 +40,5 @@ src_install() {
 		locale script meta
 
 	chmod +x ${D}/usr/libexec/${PN}/${PN}
-	sed "s:/usr/:${EPREFIX}&:" "${FILESDIR}"/wrapper | newbin - "${PN}"
+	sed "s:/usr/:${EPREFIX}&:" "${FILESDIR}"/wrapper | newbin - "${MY_PN}"
 }

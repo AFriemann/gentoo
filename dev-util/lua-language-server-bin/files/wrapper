@@ -1,5 +1,6 @@
 #!/bin/sh
-cd /usr/libexec/lua-language-server || exit 1
+
+cd /usr/libexec/lua-language-server-bin || exit 1
 
 TMPPATH=$(mktemp -d "/tmp/lua-language-server.XXXX")
 DEFAULT_LOGPATH="$TMPPATH/log"
