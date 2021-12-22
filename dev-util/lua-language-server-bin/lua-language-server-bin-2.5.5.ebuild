@@ -39,6 +39,6 @@ src_install() {
 	doins -r main.lua debugger.lua \
 		locale script meta
 
-	chmod +x ${D}/usr/libexec/${PN}/${PN}
+	chmod +x ${D}/usr/libexec/${PN}/${MY_PN}
 	sed "s:/usr/:${EPREFIX}&:" "${FILESDIR}"/wrapper | newbin - "${MY_PN}"
 }
