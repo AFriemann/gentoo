@@ -35,7 +35,7 @@ src_unpack() {
 
 src_install() {
 	insinto /usr/libexec/"${PN}"
-	doins bin/Linux/*
+	doins bin/*
 	doins -r main.lua debugger.lua \
 		locale script meta
 
