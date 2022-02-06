@@ -25,11 +25,8 @@ pkg_setup() {
 
 src_unpack() {
 	echo "nothing to unpack"
-
-#	cp -v "${DISTDIR}/stew" "${S}/bin/stew"
 }
 
 src_install() {
 	dobin "${DISTDIR}/stew"
-	#dobin bin/*
 }
