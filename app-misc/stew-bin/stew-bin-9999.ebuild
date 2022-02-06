@@ -21,15 +21,12 @@ SLOT=0
 
 pkg_setup() {
 	mkdir -vp "${S}/bin"
-	cp -v "${DISTDIR}/stew-linux" "${S}/bin/stew"
 }
 
 src_unpack() {
 	echo "skipping unpack"
-}
 
-src_configure() {
-	echo "skipping src_configure"
+	cp -v "${DISTDIR}/stew-linux" "${S}/bin/stew"
 }
 
 src_install() {
