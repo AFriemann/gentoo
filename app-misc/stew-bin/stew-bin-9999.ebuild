@@ -11,8 +11,8 @@ HOMEPAGE="https://github.com/marwanhawari/stew"
 LICENSE="MIT"
 
 SRC_URI="
-	amd64? ( https://github.com/marwanhawari/stew/releases/latest/download/stew-linux-amd64 -> stew-linux )
-	arm64? ( https://github.com/marwanhawari/stew/releases/latest/download/stew-linux-arm64 -> stew-linux )
+	amd64? ( https://github.com/marwanhawari/stew/releases/latest/download/stew-linux-amd64 -> stew )
+	arm64? ( https://github.com/marwanhawari/stew/releases/latest/download/stew-linux-arm64 -> stew )
 "
 
 KEYWORDS="~amd64 ~arm64"
@@ -24,11 +24,12 @@ pkg_setup() {
 }
 
 src_unpack() {
-	echo "skipping unpack"
+	echo "nothing to unpack"
 
-	cp -v "${DISTDIR}/stew-linux" "${S}/bin/stew"
+#	cp -v "${DISTDIR}/stew" "${S}/bin/stew"
 }
 
 src_install() {
-	dobin bin/*
+	dobin "${DISTDIR}/stew"
+	#dobin bin/*
 }
