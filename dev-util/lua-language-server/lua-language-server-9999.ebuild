@@ -7,31 +7,41 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit  )
-inherit lua ninja-utils
+inherit git-r3 ninja-utils lua
 
 DESCRIPTION="lua language server written in lua"
 HOMEPAGE="https://github.com/sumneko/lua-language-server"
-
-inherit git-r3
-EGIT_REPO_URI="https://github.com/sumneko/${PN}.git"
-
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
 KEYWORDS="~amd64"
-RESTRICT="strip"
+
+EGIT_REPO_URI="https://github.com/sumneko/${PN}.git"
+EIG_SUBMODULES=( '*' )
+
+RDEPEND="dev-lang/lua:="
+DEPEND="
+	${RDEPEND}
+	dev-util/ninja
+"
+
+src_unpack() {
+	git-r3_src_unpack
+}
 
 src_compile() {
-	ninja -C 3rd/luamake -f compile/ninja/linux.ninja
-	./3rd/luamake/luamake rebuild
+	pushd 3rd/luamake > /dev/null || die
+	eninja ninja/linux.ninja || die
+	3rd/luamake/luamake rebuild || die
 }
 
 src_install() {
-	insinto /usr/libexec/"${PN}"
-	doins bin/Linux/*
-	doins -r main.lua platform.lua debugger.lua \
-		locale script meta
-
-	chmod +x ${D}/usr/libexec/${PN}/${PN}
-	sed "s:/usr/:${EPREFIX}&:" "${FILESDIR}"/wrapper | newbin - "${PN}"
+	dobin bin/Linux/lua-language-server
+	# insinto /usr/libexec/"${PN}"
+	# doins bin/Linux/*
+	# doins -r main.lua platform.lua debugger.lua \
+	# 	locale script meta
+	#
+	# chmod +x ${D}/usr/libexec/${PN}/${PN}
+	# sed "s:/usr/:${EPREFIX}&:" "${FILESDIR}"/wrapper | newbin - "${PN}"
 }
