@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 EGIT_REPO_URI="https://github.com/sumneko/${PN}.git"
 EIG_SUBMODULES=( '*' )
 
-RDEPEND="dev-lang/lua:="
+RDEPEND="dev-lang/luajit:="
 DEPEND="
 	${RDEPEND}
 	dev-util/ninja
