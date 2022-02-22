@@ -6,7 +6,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..4} luajit  )
+LUA_COMPAT=( luajit  )
 inherit git-r3 ninja-utils lua
 
 DESCRIPTION="lua language server written in lua"
@@ -32,6 +32,7 @@ src_unpack() {
 src_compile() {
 	pushd 3rd/luamake > /dev/null || die
 	eninja ninja/linux.ninja || die
+	popd > /dev/null || die
 	3rd/luamake/luamake rebuild || die
 }
 
