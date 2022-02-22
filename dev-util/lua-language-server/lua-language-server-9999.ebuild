@@ -30,10 +30,13 @@ src_unpack() {
 }
 
 src_compile() {
-	pushd 3rd/luamake > /dev/null || die
-	eninja ninja/linux.ninja || die
-	popd > /dev/null || die
-	3rd/luamake/luamake rebuild || die
+	ninja -C 3rd/luamake -f compile/ninja/linux.ninja || die
+	./3rd/luamake/luamake rebuild || die
+
+	# pushd 3rd/luamake > /dev/null || die
+	# eninja ninja/linux.ninja || die
+	# popd > /dev/null || die
+	# 3rd/luamake/luamake rebuild || die
 }
 
 src_install() {
